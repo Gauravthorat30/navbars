@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SideNav</title>
+  <style>
+    :root {
+      --bg: #fff;
+      --text: #222;
+      --highlight: #0af;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #f0f0f0;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: sans-serif;
+      transition: 0.4s;
+    }
+
+    .sidebar {
+      position: fixed;
+      height: 100vh;
+      width: 200px;
+      background: var(--bg);
+      border-right: 2px solid var(--highlight);
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1rem;
+      gap: 2rem;
+    }
+
+    .sidebar a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      border-left: 3px solid transparent;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      border-left: 3px solid var(--highlight);
+      background: rgba(0, 170, 255, 0.1);
+    }
+
+    .toggle-btn {
+      margin-top: auto;
+      background: none;
+      border: 2px solid var(--highlight);
+      color: var(--text);
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    main {
+      margin-left: 220px;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="#">Dashboard</a>
+    <a href="#">Reports</a>
+    <a href="#">Settings</a>
+    <button class="toggle-btn" id="sideToggle">🌙</button>
+  </div>
+  <main>
+    <h1>Welcome</h1>
+    <p>This is a sidebar layout with dark mode toggle.</p>
+  </main>
+
+  <script>
+    const sideToggle = document.getElementById("sideToggle");
+    sideToggle.onclick = () => {
+      document.body.classList.toggle("dark");
+      sideToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    };
+  </script>
+</body>
+</html>
